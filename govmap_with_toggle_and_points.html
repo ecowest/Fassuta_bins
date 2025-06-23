@@ -1,0 +1,2857 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>GovMap + Custom Layer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    #map {
+      width: 100%;
+      height: 90vh;
+    }
+  </style>
+</head>
+<body>
+  <h3 style="text-align:center;">מפת govmap עם נקודות מהמיפוי שלך</h3>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map').setView([33.0489762088851, 35.30880490953425], 14);
+
+    // govmap layers
+    var ortho = L.tileLayer.wms("https://wms.govmap.gov.il/wms", {
+        layers: 'Orthophoto',
+        format: 'image/png',
+        transparent: false,
+        version: '1.1.1',
+        attribution: 'GovMap תצ"א'
+    });
+
+    var topo = L.tileLayer.wms("https://wms.govmap.gov.il/wms", {
+        layers: 'IsraelMap',
+        format: 'image/png',
+        transparent: false,
+        version: '1.1.1',
+        attribution: 'GovMap טופוגרפית'
+    });
+
+    var baseLayers = {
+        "תצ&quot;א (Orthophoto)": ortho,
+        "טופוגרפית (IsraelMap)": topo
+    };
+
+    ortho.addTo(map);  // default
+
+    // Marker layer
+    var points = L.layerGroup();
+
+    L.circleMarker([33.04805344836225, 35.30911076813936], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 3</b><br>1").addTo(points);
+    
+    L.circleMarker([33.04815799256585, 35.30899744480848], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 4</b><br>1").addTo(points);
+    
+    L.circleMarker([33.048247360899545, 35.30902426689863], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 4</b><br>1").addTo(points);
+    
+    L.circleMarker([33.04838815799603, 35.309133902192116], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 5</b><br>1").addTo(points);
+    
+    L.circleMarker([33.04815799256585, 35.30899744480848], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 6</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04846853308389, 35.309060141444206], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 6</b><br>מחזור פלסטיק").addTo(points);
+    
+    L.circleMarker([33.04845504356378, 35.308987721800804], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 7</b><br>1").addTo(points);
+    
+    L.circleMarker([33.0485503726569, 35.30884517630337], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 8</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04857532504523, 35.30865915119648], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 9</b><br>1").addTo(points);
+    
+    L.circleMarker([33.04857340429444, 35.30852030107361], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 10</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04840601730487, 35.30837825610778], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 11</b><br>").addTo(points);
+    
+    L.circleMarker([33.048392600109025, 35.30817800005992], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 12</b><br>").addTo(points);
+    
+    L.circleMarker([33.048423005945224, 35.30797686427832], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 13</b><br>").addTo(points);
+    
+    L.circleMarker([33.048395745857114, 35.307990945875645], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 14</b><br>").addTo(points);
+    
+    L.circleMarker([33.048101786020204, 35.30839763581753], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 15</b><br>").addTo(points);
+    
+    L.circleMarker([33.04803543088508, 35.3083540360316], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 16</b><br>2").addTo(points);
+    
+    L.circleMarker([33.0479832026701, 35.30815281225364], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 17</b><br>").addTo(points);
+    
+    L.circleMarker([33.047936538568244, 35.30794970691204], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 18</b><br>2- 1100
+1- 360").addTo(points);
+    
+    L.circleMarker([33.04786346986818, 35.30738107860088], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 19</b><br>").addTo(points);
+    
+    L.circleMarker([33.0476442634042, 35.307484678924084], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 20</b><br>").addTo(points);
+    
+    L.circleMarker([33.04754929971836, 35.30749430109435], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 21</b><br>").addTo(points);
+    
+    L.circleMarker([33.04725930001837, 35.307513100002744], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 22</b><br>").addTo(points);
+    
+    L.circleMarker([33.04725446799807, 35.30750211328268], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 23</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04704679999885, 35.30752799998173], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 24</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04691610057982, 35.30754067003727], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 25</b><br>2").addTo(points);
+    
+    L.circleMarker([33.0467168454039, 35.30757017433643], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 26</b><br>").addTo(points);
+    
+    L.circleMarker([33.0464563234995, 35.30759397894144], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 27</b><br>2").addTo(points);
+    
+    L.circleMarker([33.046308196451015, 35.30758994612882], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 28</b><br>7").addTo(points);
+    
+    L.circleMarker([33.04586838989731, 35.30758626759052], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 29</b><br>").addTo(points);
+    
+    L.circleMarker([33.04574135975064, 35.30758425593376], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 30</b><br>").addTo(points);
+    
+    L.circleMarker([33.04538050320177, 35.30753865838051], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 31</b><br>").addTo(points);
+    
+    L.circleMarker([33.045107611480894, 35.30746255069971], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 32</b><br>").addTo(points);
+    
+    L.circleMarker([33.04671359030984, 35.30718947939597], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 33</b><br>").addTo(points);
+    
+    L.circleMarker([33.04695235429396, 35.30661564320326], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 34</b><br>קרטוניה").addTo(points);
+    
+    L.circleMarker([33.04691441436019, 35.306449346244335], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 35</b><br>").addTo(points);
+    
+    L.circleMarker([33.04679328749929, 35.30641179531813], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 36</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04689530386884, 35.30626427382231], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 37</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04678232705586, 35.305990017950535], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 38</b><br>").addTo(points);
+    
+    L.circleMarker([33.04697427513711, 35.3056725114584], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 39</b><br>2- 360
+1- 1100").addTo(points);
+    
+    L.circleMarker([33.04711282598118, 35.305491127073765], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 40</b><br>").addTo(points);
+    
+    L.circleMarker([33.0471552665718, 35.30533821441992], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 41</b><br>4").addTo(points);
+    
+    L.circleMarker([33.04717150537127, 35.30523209141082], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 42</b><br>").addTo(points);
+    
+    L.circleMarker([33.04705999120226, 35.30527487397194], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 43</b><br>").addTo(points);
+    
+    L.circleMarker([33.04700490810112, 35.30520882457495], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 44</b><br>").addTo(points);
+    
+    L.circleMarker([33.04702138765062, 35.30518220436099], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 45</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04696730169794, 35.30501297706775], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 46</b><br>").addTo(points);
+    
+    L.circleMarker([33.046827292968935, 35.30497010797262], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 47</b><br>").addTo(points);
+    
+    L.circleMarker([33.046886029658324, 35.30487421900034], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 48</b><br>2").addTo(points);
+    
+    L.circleMarker([33.046693062111046, 35.30492471959184], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 49</b><br>2").addTo(points);
+    
+    L.circleMarker([33.046633268397386, 35.30477075613885], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 50</b><br>").addTo(points);
+    
+    L.circleMarker([33.046798627202016, 35.30437096953392], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 51</b><br>").addTo(points);
+    
+    L.circleMarker([33.046757000081335, 35.304144500381476], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 52</b><br>2").addTo(points);
+    
+    L.circleMarker([33.046641808429555, 35.30396159738302], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 53</b><br>").addTo(points);
+    
+    L.circleMarker([33.04603364122984, 35.304632149636745], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 54</b><br>2- 360
+1- 1100").addTo(points);
+    
+    L.circleMarker([33.04823780579903, 35.30487220734358], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 55</b><br>4").addTo(points);
+    
+    L.circleMarker([33.04826506593604, 35.304579846560955], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 56</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04818581479267, 35.3044031560421], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 57</b><br>2").addTo(points);
+    
+    L.circleMarker([33.048105391395545, 35.30409131695516], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 58</b><br>2").addTo(points);
+    
+    L.circleMarker([33.047969608886824, 35.30348471191409], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 59</b><br>2").addTo(points);
+    
+    L.circleMarker([33.0479132127975, 35.30328802764416], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 60</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04867846347439, 35.3041822090745], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 61</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04867846347439, 35.3041822090745], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 62</b><br>").addTo(points);
+    
+    L.circleMarker([33.04867846347439, 35.3041822090745], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 63</b><br>").addTo(points);
+    
+    L.circleMarker([33.04867846347439, 35.3041822090745], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 64</b><br>").addTo(points);
+    
+    L.circleMarker([33.04867846347439, 35.3041822090745], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 65</b><br>").addTo(points);
+    
+    L.circleMarker([33.04867846347439, 35.3041822090745], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 66</b><br>").addTo(points);
+    
+    L.circleMarker([33.04867846347439, 35.3041822090745], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 67</b><br>").addTo(points);
+    
+    L.circleMarker([33.04867846347439, 35.3041822090745], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 68</b><br>").addTo(points);
+    
+    L.circleMarker([33.04867846347439, 35.3041822090745], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 69</b><br>").addTo(points);
+    
+    L.circleMarker([33.04867846347439, 35.3041822090745], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 70</b><br>").addTo(points);
+    
+    L.circleMarker([33.049379944389486, 35.304732622453116], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 71</b><br>4").addTo(points);
+    
+    L.circleMarker([33.049494011595044, 35.305076725780964], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 72</b><br>").addTo(points);
+    
+    L.circleMarker([33.04964408061942, 35.305231623351574], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 73</b><br>").addTo(points);
+    
+    L.circleMarker([33.049600521284745, 35.30530337244272], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 74</b><br>").addTo(points);
+    
+    L.circleMarker([33.049781899999516, 35.305731999998066], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 75</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05014430885365, 35.30569799244404], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 76</b><br>").addTo(points);
+    
+    L.circleMarker([33.05036435217139, 35.30565105378628], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 77</b><br>3").addTo(points);
+    
+    L.circleMarker([33.05040170252623, 35.30569399727025], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 78</b><br>").addTo(points);
+    
+    L.circleMarker([33.05093499999855, 35.30560650000675], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 79</b><br>4").addTo(points);
+    
+    L.circleMarker([33.051017453237925, 35.30567083507776], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 80</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05096855513304, 35.30592530965805], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 81</b><br>3").addTo(points);
+    
+    L.circleMarker([33.050937923547785, 35.306098982691765], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 82</b><br>").addTo(points);
+    
+    L.circleMarker([33.05097707426495, 35.30613360367352], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 83</b><br>").addTo(points);
+    
+    L.circleMarker([33.050952817806184, 35.30636351555586], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 84</b><br>2").addTo(points);
+    
+    L.circleMarker([33.050905605808644, 35.30637759715319], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 85</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05103515771747, 35.30664078891277], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 86</b><br>").addTo(points);
+    
+    L.circleMarker([33.05109650000407, 35.30678259999841], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 87</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05117819854071, 35.30680775642395], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 88</b><br>").addTo(points);
+    
+    L.circleMarker([33.05117819854071, 35.30686844140291], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 89</b><br>4").addTo(points);
+    
+    L.circleMarker([33.05173153108946, 35.307492390275], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 90</b><br>3").addTo(points);
+    
+    L.circleMarker([33.051897052440836, 35.30700322240591], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 91</b><br>").addTo(points);
+    
+    L.circleMarker([33.05170961143046, 35.30806638300419], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 92</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05176356750432, 35.3090276196599], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 93</b><br>").addTo(points);
+    
+    L.circleMarker([33.051150096236206, 35.30947186052799], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 94</b><br>2").addTo(points);
+    
+    L.circleMarker([33.050875500077744, 35.30951510002391], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 95</b><br>").addTo(points);
+    
+    L.circleMarker([33.05067319876138, 35.30950706452131], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 96</b><br>1- 360
+1 - 1100").addTo(points);
+    
+    L.circleMarker([33.05067319876138, 35.30950706452131], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 97</b><br>").addTo(points);
+    
+    L.circleMarker([33.05067319876138, 35.30950706452131], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 98</b><br>").addTo(points);
+    
+    L.circleMarker([33.050435170593474, 35.30935987830162], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 99</b><br>").addTo(points);
+    
+    L.circleMarker([33.05034243217205, 35.309240855276585], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 100</b><br>מחזור
+פלסטיק
+זכוכית
+טקסטיל").addTo(points);
+    
+    L.circleMarker([33.05030660015548, 35.30922879988062], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 101</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05017381661019, 35.309231132268906], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 102</b><br>").addTo(points);
+    
+    L.circleMarker([33.05000559896064, 35.30925919941103], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 103</b><br>").addTo(points);
+    
+    L.circleMarker([33.04989166584781, 35.309225767850876], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 104</b><br>").addTo(points);
+    
+    L.circleMarker([33.04984332917232, 35.30915234237909], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 105</b><br>קרטוניה").addTo(points);
+    
+    L.circleMarker([33.049529983219706, 35.309385024011135], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 106</b><br>").addTo(points);
+    
+    L.circleMarker([33.04952857807838, 35.30935350805521], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 107</b><br>").addTo(points);
+    
+    L.circleMarker([33.049414387199356, 35.30955394660788], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 108</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04914244439615, 35.30980411916971], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 109</b><br>").addTo(points);
+    
+    L.circleMarker([33.04909916584298, 35.309867821633816], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 110</b><br>").addTo(points);
+    
+    L.circleMarker([33.04880839483705, 35.309925801256064], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 111</b><br>6").addTo(points);
+    
+    L.circleMarker([33.048855231781914, 35.30978299677372], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 112</b><br>").addTo(points);
+    
+    L.circleMarker([33.048855231781914, 35.30978299677372], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 113</b><br>").addTo(points);
+    
+    L.circleMarker([33.04898110008112, 35.30934880008109], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 114</b><br>").addTo(points);
+    
+    L.circleMarker([33.04898709992553, 35.30934919999001], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 115</b><br>").addTo(points);
+    
+    L.circleMarker([33.049074997291044, 35.309312269091606], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 116</b><br>").addTo(points);
+    
+    L.circleMarker([33.049074997291044, 35.309312269091606], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 117</b><br>3").addTo(points);
+    
+    L.circleMarker([33.0495361658412, 35.3088566288352], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 118</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04937822782841, 35.309014208614826], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 119</b><br>").addTo(points);
+    
+    L.circleMarker([33.04937822782841, 35.309014208614826], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 120</b><br>").addTo(points);
+    
+    L.circleMarker([33.04937822782841, 35.309014208614826], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 121</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04958646988189, 35.30880197882652], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 122</b><br>מחזור פלסטיק").addTo(points);
+    
+    L.circleMarker([33.04982787267164, 35.30871078372002], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 123</b><br>2  - 360
+1 - 1100").addTo(points);
+    
+    L.circleMarker([33.0499208929459, 35.30879226139738], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 124</b><br>").addTo(points);
+    
+    L.circleMarker([33.04995429764081, 35.308886789062036], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 125</b><br>").addTo(points);
+    
+    L.circleMarker([33.04851153091548, 35.310317762196064], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 126</b><br>6").addTo(points);
+    
+    L.circleMarker([33.04847443474829, 35.31002037227154], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 127</b><br>4").addTo(points);
+    
+    L.circleMarker([33.04856292766806, 35.30978100623087], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 128</b><br>").addTo(points);
+    
+    L.circleMarker([33.04848230363357, 35.30977092683315], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 129</b><br>").addTo(points);
+    
+    L.circleMarker([33.048552561506426, 35.30963983386755], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 130</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04862341156185, 35.30948522792376], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 131</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04869110986747, 35.30915234237909], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 132</b><br>קרטוניה").addTo(points);
+    
+    L.circleMarker([33.048622943145276, 35.30917453528209], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 133</b><br>").addTo(points);
+    
+    L.circleMarker([33.04894459940805, 35.309152007102966], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 134</b><br>").addTo(points);
+    
+    L.circleMarker([33.04897466962665, 35.308918319642544], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 135</b><br>").addTo(points);
+    
+    L.circleMarker([33.04897466962665, 35.308918319642544], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 136</b><br>").addTo(points);
+    
+    L.circleMarker([33.04892099226699, 35.30858337827674], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 137</b><br>").addTo(points);
+    
+    L.circleMarker([33.048903568999776, 35.308232344686985], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 138</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04883977510781, 35.30892100185156], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 139</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04817991310891, 35.308459997177124], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 140</b><br>").addTo(points);
+    
+    L.circleMarker([33.0477147, 35.3078855], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 141</b><br>2").addTo(points);
+    
+    L.circleMarker([33.0476001410115, 35.308233350515366], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 142</b><br>").addTo(points);
+    
+    L.circleMarker([33.04747710000003, 35.30855349999991], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 143</b><br>").addTo(points);
+    
+    L.circleMarker([33.04732051132095, 35.30897229909897], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 144</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04733962172001, 35.309011191129684], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 145</b><br>").addTo(points);
+    
+    L.circleMarker([33.04729353192695, 35.30916675925255], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 146</b><br>4").addTo(points);
+    
+    L.circleMarker([33.047205596831525, 35.309829739089245], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 147</b><br>5").addTo(points);
+    
+    L.circleMarker([33.0472429355835, 35.30995483788514], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 148</b><br>").addTo(points);
+    
+    L.circleMarker([33.047343702390066, 35.310368902776574], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 149</b><br>3 - 360
+1- 1100").addTo(points);
+    
+    L.circleMarker([33.04757793928962, 35.31073451042175], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 150</b><br>3").addTo(points);
+    
+    L.circleMarker([33.0476282444489, 35.31063962727785], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 151</b><br>2").addTo(points);
+    
+    L.circleMarker([33.047690071979574, 35.3106265515089], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 152</b><br>").addTo(points);
+    
+    L.circleMarker([33.04785470283244, 35.310641999134745], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 153</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04798431422397, 35.310527980327606], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 154</b><br>6").addTo(points);
+    
+    L.circleMarker([33.04810263169516, 35.31029734877113], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 155</b><br>").addTo(points);
+    
+    L.circleMarker([33.0480263, 35.3101247], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 156</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04793885745119, 35.3099569425488], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 157</b><br>4").addTo(points);
+    
+    L.circleMarker([33.047829464798596, 35.3097927197814], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 158</b><br>6").addTo(points);
+    
+    L.circleMarker([33.04622812029204, 35.312313325703144], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 159</b><br>1- 360
+2 - 1100").addTo(points);
+    
+    L.circleMarker([33.046395900294016, 35.312407203018665], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 160</b><br>2").addTo(points);
+    
+    L.circleMarker([33.046561993749954, 35.312092043459415], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 161</b><br>4").addTo(points);
+    
+    L.circleMarker([33.046716002292186, 35.311892218887806], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 162</b><br>2 - 360
+1 - 1100").addTo(points);
+    
+    L.circleMarker([33.04675647164545, 35.31184025108814], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 163</b><br>קרטוניה").addTo(points);
+    
+    L.circleMarker([33.046818018751246, 35.31173598021269], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 164</b><br>3").addTo(points);
+    
+    L.circleMarker([33.0470692999957, 35.31129134630751], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 165</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04755573756216, 35.31120825558901], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 166</b><br>2").addTo(points);
+    
+    L.circleMarker([33.046943923198974, 35.311107002198696], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 167</b><br>").addTo(points);
+    
+    L.circleMarker([33.046836005111956, 35.31115360558033], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 168</b><br>").addTo(points);
+    
+    L.circleMarker([33.046638998054746, 35.311819799244404], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 169</b><br>").addTo(points);
+    
+    L.circleMarker([33.04646644060224, 35.31209539624539], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 170</b><br>").addTo(points);
+    
+    L.circleMarker([33.04636807750172, 35.31219430267811], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 171</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04612260862698, 35.31241789472795], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 172</b><br>1- 1100").addTo(points);
+    
+    L.circleMarker([33.046043196569535, 35.312554724514484], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 173</b><br>").addTo(points);
+    
+    L.circleMarker([33.045968721100465, 35.312591940164566], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 174</b><br>2 - 1100").addTo(points);
+    
+    L.circleMarker([33.04582033205364, 35.312818586826324], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 175</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04795733503334, 35.307044461369514], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 176</b><br>מחזור
+פלסטיק
+זכוכית
+בגדים").addTo(points);
+    
+    L.circleMarker([33.04796770506494, 35.307028804583176], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 177</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04809251193673, 35.30705317854881], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 178</b><br>").addTo(points);
+    
+    L.circleMarker([33.0480483897686, 35.30693717300892], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 179</b><br>").addTo(points);
+    
+    L.circleMarker([33.04829541741885, 35.30699819326401], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 180</b><br>").addTo(points);
+    
+    L.circleMarker([33.04833171835467, 35.30700092145044], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 181</b><br>").addTo(points);
+    
+    L.circleMarker([33.04855609997243, 35.3068345000571], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 182</b><br>").addTo(points);
+    
+    L.circleMarker([33.04864389665738, 35.30683156102896], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 183</b><br>").addTo(points);
+    
+    L.circleMarker([33.04868014966024, 35.306673645973206], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 184</b><br>").addTo(points);
+    
+    L.circleMarker([33.04868014966024, 35.306673645973206], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 185</b><br>").addTo(points);
+    
+    L.circleMarker([33.04868014966024, 35.306673645973206], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 186</b><br>3").addTo(points);
+    
+    L.circleMarker([33.048520523923365, 35.30631724745035], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 187</b><br>").addTo(points);
+    
+    L.circleMarker([33.04853008132247, 35.30622436754035], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 188</b><br>").addTo(points);
+    
+    L.circleMarker([33.04852413905582, 35.30614616116187], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 189</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04837944600657, 35.305974930524826], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 190</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04817130181853, 35.30600340074823], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 191</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04852670013892, 35.30581629995613], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 192</b><br>").addTo(points);
+    
+    L.circleMarker([33.04853629999998, 35.305799200000045], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 193</b><br>").addTo(points);
+    
+    L.circleMarker([33.0484942, 35.3055889], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 194</b><br>").addTo(points);
+    
+    L.circleMarker([33.04853598065349, 35.30559238046408], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 195</b><br>").addTo(points);
+    
+    L.circleMarker([33.0484631451637, 35.30533246834565], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 196</b><br>").addTo(points);
+    
+    L.circleMarker([33.048389563155546, 35.305363051593304], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 197</b><br>").addTo(points);
+    
+    L.circleMarker([33.04836427028094, 35.3052718564868], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 198</b><br>").addTo(points);
+    
+    L.circleMarker([33.04839321657016, 35.30516255646944], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 199</b><br>").addTo(points);
+    
+    L.circleMarker([33.04736013729088, 35.30567184090614], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 200</b><br>").addTo(points);
+    
+    L.circleMarker([33.04740875636441, 35.30562188476324], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 201</b><br>").addTo(points);
+    
+    L.circleMarker([33.047444900410284, 35.30570309997436], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 202</b><br>").addTo(points);
+    
+    L.circleMarker([33.047462434038664, 35.305823385715485], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 203</b><br>").addTo(points);
+    
+    L.circleMarker([33.047471882063775, 35.30585731461135], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 204</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04749812545842, 35.30591860413551], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 205</b><br>2").addTo(points);
+    
+    L.circleMarker([33.0478027665943, 35.30559204518795], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 206</b><br>3").addTo(points);
+    
+    L.circleMarker([33.0477648270269, 35.30557796359062], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 207</b><br>2").addTo(points);
+    
+    L.circleMarker([33.047579906531034, 35.30557829886675], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 208</b><br>").addTo(points);
+    
+    L.circleMarker([33.04758689997514, 35.30608899990204], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 209</b><br>2").addTo(points);
+    
+    L.circleMarker([33.0476570999998, 35.306119499999916], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 210</b><br>").addTo(points);
+    
+    L.circleMarker([33.0476608, 35.3061922], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 211</b><br>").addTo(points);
+    
+    L.circleMarker([33.0476947415081, 35.30623652488444], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 212</b><br>").addTo(points);
+    
+    L.circleMarker([33.04770639997807, 35.306468599897634], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 213</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04741734248715, 35.30641098580268], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 214</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04768045852443, 35.30668692981226], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 215</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04768970158445, 35.306823900924265], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 216</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04781091657331, 35.306975059211254], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 217</b><br>").addTo(points);
+    
+    L.circleMarker([33.04780698210079, 35.30706524848938], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 218</b><br>").addTo(points);
+    
+    L.circleMarker([33.048745067790904, 35.30703876167536], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 219</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04871106306177, 35.307086035609245], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 220</b><br>").addTo(points);
+    
+    L.circleMarker([33.04894680061542, 35.3073393015129], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 221</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04904189915478, 35.30732740020527], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 222</b><br>2").addTo(points);
+    
+    L.circleMarker([33.049019634420354, 35.30738174915314], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 223</b><br>").addTo(points);
+    
+    L.circleMarker([33.049115184530734, 35.30736096203327], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 224</b><br>").addTo(points);
+    
+    L.circleMarker([33.04924445804445, 35.307403206825256], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 225</b><br>").addTo(points);
+    
+    L.circleMarker([33.049252326860895, 35.30745081603527], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 226</b><br>").addTo(points);
+    
+    L.circleMarker([33.04948060020088, 35.30747760033479], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 227</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04981438335977, 35.30736833810806], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 228</b><br>").addTo(points);
+    
+    L.circleMarker([33.04979948890881, 35.30743572860956], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 229</b><br>").addTo(points);
+    
+    L.circleMarker([33.049812978223, 35.30711956322193], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 230</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04976773280687, 35.30692778527737], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 231</b><br>").addTo(points);
+    
+    L.circleMarker([33.04971770989742, 35.30690263956785], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 232</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04986574456948, 35.306525624718674], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 233</b><br>").addTo(points);
+    
+    L.circleMarker([33.04982534342584, 35.30649192631245], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 234</b><br>2").addTo(points);
+    
+    L.circleMarker([33.049884921197005, 35.306392684578896], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 235</b><br>").addTo(points);
+    
+    L.circleMarker([33.04996473286506, 35.30737537890673], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 236</b><br>").addTo(points);
+    
+    L.circleMarker([33.05001391255404, 35.30736666172743], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 237</b><br>").addTo(points);
+    
+    L.circleMarker([33.04987430053263, 35.30705679917146], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 238</b><br>").addTo(points);
+    
+    L.circleMarker([33.04996388978443, 35.306901298463345], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 239</b><br>3").addTo(points);
+    
+    L.circleMarker([33.05015554990491, 35.30684296041727], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 240</b><br>").addTo(points);
+    
+    L.circleMarker([33.050190199999896, 35.307375300000096], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 241</b><br>").addTo(points);
+    
+    L.circleMarker([33.05022181606407, 35.30738148080578], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 242</b><br>").addTo(points);
+    
+    L.circleMarker([33.05034299973593, 35.30739469986424], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 243</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05047440122538, 35.30735829978339], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 244</b><br>").addTo(points);
+    
+    L.circleMarker([33.050491656675014, 35.307336151599884], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 245</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05064149998537, 35.30745969995611], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 246</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05080528022985, 35.30723322182894], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 247</b><br>2").addTo(points);
+    
+    L.circleMarker([33.050834225716706, 35.30732676386833], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 248</b><br>").addTo(points);
+    
+    L.circleMarker([33.050824503865876, 35.30746361361309], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 249</b><br>2").addTo(points);
+    
+    L.circleMarker([33.0507762, 35.3078009], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 250</b><br>").addTo(points);
+    
+    L.circleMarker([33.05108377476204, 35.30734084546566], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 251</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05105876368465, 35.307400189340115], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 252</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05115980309306, 35.30740970040344], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 253</b><br>").addTo(points);
+    
+    L.circleMarker([33.051218384820565, 35.307509154081345], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 254</b><br>").addTo(points);
+    
+    L.circleMarker([33.051390932694865, 35.30757989734411], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 255</b><br>").addTo(points);
+    
+    L.circleMarker([33.05071001209812, 35.3069170661724], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 256</b><br>").addTo(points);
+    
+    L.circleMarker([33.05061889999995, 35.30677500000005], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 257</b><br>3").addTo(points);
+    
+    L.circleMarker([33.050709731953326, 35.3067272901535], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 258</b><br>2").addTo(points);
+    
+    L.circleMarker([33.050749000542446, 35.30673554255924], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 259</b><br>").addTo(points);
+    
+    L.circleMarker([33.049534479671735, 35.3057673946023], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 260</b><br>").addTo(points);
+    
+    L.circleMarker([33.04933326321783, 35.3059608489275], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 261</b><br>").addTo(points);
+    
+    L.circleMarker([33.049092300009235, 35.30610600000179], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 262</b><br>6").addTo(points);
+    
+    L.circleMarker([33.04886562990659, 35.30619151890278], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 263</b><br>6").addTo(points);
+    
+    L.circleMarker([33.048670101710485, 35.30622014860229], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 264</b><br>").addTo(points);
+    
+    L.circleMarker([33.04854840000717, 35.30658209999549], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 265</b><br>").addTo(points);
+    
+    L.circleMarker([33.04965082528867, 35.30775558203459], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 266</b><br>").addTo(points);
+    
+    L.circleMarker([33.049689100545386, 35.30788441680997], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 267</b><br>").addTo(points);
+    
+    L.circleMarker([33.04969942035676, 35.307914093254986], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 268</b><br>קרטוניה").addTo(points);
+    
+    L.circleMarker([33.04933489712269, 35.30799538817353], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 269</b><br>3").addTo(points);
+    
+    L.circleMarker([33.049330400000265, 35.30791849999994], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 270</b><br>").addTo(points);
+    
+    L.circleMarker([33.049217198210606, 35.30794534832239], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 271</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04917942434723, 35.30793387947778], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 272</b><br>קרטוניה").addTo(points);
+    
+    L.circleMarker([33.04918530008195, 35.30788579997268], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 273</b><br>").addTo(points);
+    
+    L.circleMarker([33.04902694119717, 35.30791483819485], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 274</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04893982189574, 35.30789002776146], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 275</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04927031272442, 35.308459661901], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 276</b><br>").addTo(points);
+    
+    L.circleMarker([33.04954965519572, 35.30838154256344], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 278</b><br>").addTo(points);
+    
+    L.circleMarker([33.04971377551006, 35.30813578516245], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 278</b><br>").addTo(points);
+    
+    L.circleMarker([33.04972368939836, 35.308513056479555], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 279</b><br>3").addTo(points);
+    
+    L.circleMarker([33.050080613698114, 35.308295810586614], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 280</b><br>").addTo(points);
+    
+    L.circleMarker([33.05006730761387, 35.30799899250269], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 281</b><br>6").addTo(points);
+    
+    L.circleMarker([33.050223901160024, 35.307936098576164], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 282</b><br>").addTo(points);
+    
+    L.circleMarker([33.05004454446073, 35.307734459638596], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 283</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05001587974103, 35.307692885398865], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 284</b><br>").addTo(points);
+    
+    L.circleMarker([33.05038008960343, 35.30772004276514], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 285</b><br>").addTo(points);
+    
+    L.circleMarker([33.05055348219535, 35.30795607715845], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 286</b><br>").addTo(points);
+    
+    L.circleMarker([33.05072179941334, 35.30795129838668], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 287</b><br>").addTo(points);
+    
+    L.circleMarker([33.05095675213815, 35.30804358422756], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 288</b><br>").addTo(points);
+    
+    L.circleMarker([33.05109023829773, 35.30795942991972], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 289</b><br>").addTo(points);
+    
+    L.circleMarker([33.05092829677645, 35.30814569953728], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 290</b><br>5").addTo(points);
+    
+    L.circleMarker([33.05097029627456, 35.308278597338365], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 291</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05085474146963, 35.308481330344364], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 292</b><br>").addTo(points);
+    
+    L.circleMarker([33.050683000001825, 35.30842370000315], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 293</b><br>").addTo(points);
+    
+    L.circleMarker([33.05043713817785, 35.30851934078322], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 294</b><br>").addTo(points);
+    
+    L.circleMarker([33.05049810015372, 35.30868109992048], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 295</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05056022679495, 35.308923684060574], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 296</b><br>2").addTo(points);
+    
+    L.circleMarker([33.050721599999996, 35.3091819], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 297</b><br>").addTo(points);
+    
+    L.circleMarker([33.050892397685764, 35.30920196324587], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 298</b><br>").addTo(points);
+    
+    L.circleMarker([33.0510969, 35.3091315], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 299</b><br>").addTo(points);
+    
+    L.circleMarker([33.05119337378142, 35.30914228409529], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 300</b><br>2").addTo(points);
+    
+    L.circleMarker([33.051154100000055, 35.3090628000001], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 301</b><br>").addTo(points);
+    
+    L.circleMarker([33.0510818, 35.30879329999999], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 302</b><br>").addTo(points);
+    
+    L.circleMarker([33.050223416215985, 35.30857117939616], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 303</b><br>5").addTo(points);
+    
+    L.circleMarker([33.0494774, 35.3098082], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 304</b><br>").addTo(points);
+    
+    L.circleMarker([33.04952127134319, 35.31004182994366], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 305</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04956960819547, 35.31002774834633], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 306</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04962637586019, 35.310271829366684], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 307</b><br>").addTo(points);
+    
+    L.circleMarker([33.0496022003836, 35.310438498023636], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 308</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04966319051428, 35.31039420515299], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 309</b><br>").addTo(points);
+    
+    L.circleMarker([33.0497128, 35.3104482], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 310</b><br>").addTo(points);
+    
+    L.circleMarker([33.04970169131928, 35.31055446714163], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 311</b><br>").addTo(points);
+    
+    L.circleMarker([33.04975817787131, 35.31060442328453], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 312</b><br>").addTo(points);
+    
+    L.circleMarker([33.04971602373142, 35.310639292001724], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 313</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04982140904328, 35.31083844602108], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 314</b><br>6").addTo(points);
+    
+    L.circleMarker([33.04982056596129, 35.31099770218134], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 315</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04998974425317, 35.31101178377867], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 316</b><br>").addTo(points);
+    
+    L.circleMarker([33.050177188924586, 35.31116634607315], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 317</b><br>3").addTo(points);
+    
+    L.circleMarker([33.050238452613726, 35.31111437827349], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 318</b><br>").addTo(points);
+    
+    L.circleMarker([33.05038510026975, 35.311046200657884], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 319</b><br>").addTo(points);
+    
+    L.circleMarker([33.05031485109736, 35.31053975260697], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 320</b><br>").addTo(points);
+    
+    L.circleMarker([33.050260653664864, 35.310200080275536], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 321</b><br>2").addTo(points);
+    
+    L.circleMarker([33.050127173740734, 35.31017017749198], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 322</b><br>").addTo(points);
+    
+    L.circleMarker([33.05068415872056, 35.310846492648125], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 323</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05067657105664, 35.310747250914574], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 324</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05081960000001, 35.310855699999955], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 325</b><br>").addTo(points);
+    
+    L.circleMarker([33.051168362735154, 35.3109098598361], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 326</b><br>").addTo(points);
+    
+    L.circleMarker([33.0511498095539, 35.310821973784705], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 327</b><br>2").addTo(points);
+    
+    L.circleMarker([33.050326694733265, 35.31163640320301], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 328</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05046102492384, 35.31230326741934], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 329</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05063610350479, 35.313086807727814], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 330</b><br>").addTo(points);
+    
+    L.circleMarker([33.05061849479869, 35.3132639914314], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 331</b><br>").addTo(points);
+    
+    L.circleMarker([33.05063219907127, 35.31333929938086], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 332</b><br>").addTo(points);
+    
+    L.circleMarker([33.05063104505951, 35.31353674829006], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 333</b><br>4").addTo(points);
+    
+    L.circleMarker([33.05061323131293, 35.31378958807417], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 334</b><br>").addTo(points);
+    
+    L.circleMarker([33.05061409935894, 35.313880298076825], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 335</b><br>3").addTo(points);
+    
+    L.circleMarker([33.05061670022283, 35.31411849917057], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 336</b><br>3").addTo(points);
+    
+    L.circleMarker([33.05065437011038, 35.31429748982191], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 337</b><br>").addTo(points);
+    
+    L.circleMarker([33.050623738415815, 35.31454224139452], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 338</b><br>").addTo(points);
+    
+    L.circleMarker([33.05070102019355, 35.3147729113698], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 339</b><br>").addTo(points);
+    
+    L.circleMarker([33.05063301223271, 35.31480509787798], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 340</b><br>2").addTo(points);
+    
+    L.circleMarker([33.05039910000001, 35.31478789999991], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 341</b><br>").addTo(points);
+    
+    L.circleMarker([33.05032416550178, 35.31258087605238], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 342</b><br>8
+Seperate").addTo(points);
+    
+    L.circleMarker([33.049996207869185, 35.312589928507805], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 343</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04982899678089, 35.31295236200094], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 344</b><br>").addTo(points);
+    
+    L.circleMarker([33.049928761417995, 35.312998965382576], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 345</b><br>").addTo(points);
+    
+    L.circleMarker([33.04995931362217, 35.313548449843864], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 346</b><br>4").addTo(points);
+    
+    L.circleMarker([33.04993400326112, 35.31403510896526], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 347</b><br>").addTo(points);
+    
+    L.circleMarker([33.04998131344899, 35.31413722783327], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 348</b><br>").addTo(points);
+    
+    L.circleMarker([33.0497441264936, 35.31265664845705], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 349</b><br>").addTo(points);
+    
+    L.circleMarker([33.04971518064843, 35.31273242086172], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 350</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04965841304095, 35.31275387853384], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 351</b><br>").addTo(points);
+    
+    L.circleMarker([33.04938778280522, 35.31289737671614], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 352</b><br>").addTo(points);
+    
+    L.circleMarker([33.049370359023236, 35.312829315662384], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 353</b><br>").addTo(points);
+    
+    L.circleMarker([33.04842669439833, 35.310754299855695], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 354</b><br>").addTo(points);
+    
+    L.circleMarker([33.04844099197813, 35.31133197247982], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 355</b><br>").addTo(points);
+    
+    L.circleMarker([33.048439586819455, 35.311476811766624], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 356</b><br>").addTo(points);
+    
+    L.circleMarker([33.04838872005984, 35.311584770679474], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 357</b><br>").addTo(points);
+    
+    L.circleMarker([33.04843020000008, 35.311677000005226], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 358</b><br>").addTo(points);
+    
+    L.circleMarker([33.04847836919102, 35.311667919158936], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 359</b><br>").addTo(points);
+    
+    L.circleMarker([33.04845920000153, 35.31186360000312], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 360</b><br>3").addTo(points);
+    
+    L.circleMarker([33.048531203119, 35.31228415668011], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 361</b><br>5").addTo(points);
+    
+    L.circleMarker([33.04855900455586, 35.312672012850456], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 362</b><br>").addTo(points);
+    
+    L.circleMarker([33.048554800672086, 35.312770905346206], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 363</b><br>").addTo(points);
+    
+    L.circleMarker([33.0485752, 35.3128268], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 364</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04854806500424, 35.312943644821644], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 365</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04861972798049, 35.31319107860327], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 366</b><br>").addTo(points);
+    
+    L.circleMarker([33.04862930476452, 35.31327702276173], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 367</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04863340105458, 35.31339530158188], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 368</b><br>").addTo(points);
+    
+    L.circleMarker([33.048612421169906, 35.31360883265734], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 369</b><br>2").addTo(points);
+    
+    L.circleMarker([33.048612421169906, 35.31360883265734], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 370</b><br>").addTo(points);
+    
+    L.circleMarker([33.048612421169906, 35.31360883265734], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 371</b><br>3
+Seperate").addTo(points);
+    
+    L.circleMarker([33.048724800000016, 35.314531800000005], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 372</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04870291316607, 35.31482085585594], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 373</b><br>").addTo(points);
+    
+    L.circleMarker([33.04874647294472, 35.314921438694], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 374</b><br>").addTo(points);
+    
+    L.circleMarker([33.04869026677466, 35.31497273594141], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 375</b><br>").addTo(points);
+    
+    L.circleMarker([33.04870235110427, 35.315377078950405], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 376</b><br>2
+Seperate").addTo(points);
+    
+    L.circleMarker([33.04888589928507, 35.315323999663555], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 377</b><br>").addTo(points);
+    
+    L.circleMarker([33.04910787776122, 35.315337516367435], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 378</b><br>").addTo(points);
+    
+    L.circleMarker([33.04912698777246, 35.31542032957077], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 379</b><br>2").addTo(points);
+    
+    L.circleMarker([33.04926553522977, 35.31540960073471], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 380</b><br>2").addTo(points);
+    
+    L.circleMarker([33.0493068464984, 35.31506326049566], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 381</b><br>2").addTo(points);
+    
+    L.circleMarker([33.0493672677067, 35.31501900404692], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 382</b><br>מחזור פלסטיק
+זכוכית").addTo(points);
+    
+    L.circleMarker([33.04935799375651, 35.31452480703592], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 383</b><br>3").addTo(points);
+    
+    L.circleMarker([33.04916745601782, 35.31378921121359], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 384</b><br>").addTo(points);
+    
+    L.circleMarker([33.04916745601782, 35.31378921121359], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 385</b><br>").addTo(points);
+    
+    L.circleMarker([33.04916717498841, 35.313503220677376], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 386</b><br>2").addTo(points);
+    
+    L.circleMarker([33.049149751162766, 35.31300902366638], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 387</b><br>2").addTo(points);
+    
+    L.circleMarker([33.049058199999926, 35.31269799999996], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 388</b><br>4").addTo(points);
+    
+    L.circleMarker([33.04904768314557, 35.31251601498453], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 389</b><br>").addTo(points);
+    
+    L.circleMarker([33.04900979837368, 35.31205449253321], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 390</b><br>").addTo(points);
+    
+    L.circleMarker([33.04899602682679, 35.311946194539175], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 391</b><br>").addTo(points);
+    
+    L.circleMarker([33.049030690498654, 35.311662840827886], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 392</b><br>").addTo(points);
+    
+    L.circleMarker([33.04897270241641, 35.311523750424385], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 393</b><br>6").addTo(points);
+    
+    L.circleMarker([33.0489934986368, 35.3114952519536], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 394</b><br>").addTo(points);
+    
+    L.circleMarker([33.04884734499499, 35.311171979122605], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 395</b><br>").addTo(points);
+    
+    L.circleMarker([33.04897944713707, 35.31038749963045], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 396</b><br>").addTo(points);
+    
+    L.circleMarker([33.04903031355548, 35.310283564031124], {
+        radius: 6,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.8
+    }).bindPopup("<b>Marker 397</b><br>2").addTo(points);
+    
+    points.addTo(map);
+
+    var overlays = {
+        "נקודות מהמיפוי שלך": points
+    };
+
+    L.control.layers(baseLayers, overlays).addTo(map);
+  </script>
+</body>
+</html>
